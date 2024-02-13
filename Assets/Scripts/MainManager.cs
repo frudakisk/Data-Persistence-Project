@@ -24,7 +24,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BestScore();
+        BestScore(); //init the highscore upon each startup
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -71,6 +71,10 @@ public class MainManager : MonoBehaviour
         ScoreText.text = $"Score : {m_Points}";
     }
 
+    /// <summary>
+    /// Create the text for the best score on the top of the screen
+    /// by using persistant data
+    /// </summary>
     void BestScore()
     {
         highscoreText.text = "Best Score: " + MenuManager.Instance.highscoreHolder + ": " + MenuManager.Instance.highscore; 

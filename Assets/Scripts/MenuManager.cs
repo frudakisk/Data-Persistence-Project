@@ -12,9 +12,10 @@ public class MenuManager : MonoBehaviour
     public int highscore;
     public string highscoreHolder;
 
+    //Called before any Start() methods
     private void Awake()
     {
-        if(Instance != null)
+        if(Instance != null) //if statement to stop duplicate MenuManagers
         {
             Destroy(gameObject);
             return;
@@ -24,6 +25,10 @@ public class MenuManager : MonoBehaviour
         LoadInfo();
     }
 
+    /// <summary>
+    /// Save our info into our SaveData class and turn that class into JSON.
+    /// save JSON file in special path
+    /// </summary>
     public void SaveInfo()
     {
         SaveData data = new SaveData();
@@ -34,6 +39,10 @@ public class MenuManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
+    /// <summary>
+    /// Call up the data we may have saved at our special path
+    /// and assign saved values to our current MenuManger instance
+    /// </summary>
     public void LoadInfo()
     {
         string path = Application.persistentDataPath + "/savefile.json";
@@ -47,6 +56,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// A serializable class ready for json format conversion
+    /// </summary>
     [System.Serializable]
     class SaveData
     {

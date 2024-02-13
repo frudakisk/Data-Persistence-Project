@@ -14,11 +14,17 @@ public class MenuUIHandler : MonoBehaviour
     public TextMeshProUGUI inputName;
     public TextMeshProUGUI bestScoreText;
 
+    /// <summary>
+    /// Call up our current best scorer and their score and assign to a text
+    /// </summary>
     private void Start()
     {
         bestScoreText.text = "Best Score: " + MenuManager.Instance.highscoreHolder + ": " + MenuManager.Instance.highscore;
     }
 
+    /// <summary>
+    /// Use the inputted name in our menu as the username for main scene
+    /// </summary>
     public void StartGame()
     {
         //save the inputted name
@@ -26,6 +32,11 @@ public class MenuUIHandler : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+
+    /// <summary>
+    /// Turn the application off. But before doing that, we save our data for
+    /// the next session
+    /// </summary>
     public void QuitGame()
     {
         MenuManager.Instance.SaveInfo();
